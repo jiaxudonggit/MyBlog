@@ -214,7 +214,7 @@ export interface ISetting extends Document {
     /**
      * 公安备案信息
      */
-    // govRecordInfo: string,
+    govRecordInfo: string,
 
     /**
    * 是否显示博客简介

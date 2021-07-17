@@ -5,10 +5,10 @@
       href="https://github.com/jiaxudonggit/MyBlog"
       target="_blank"
     >iBlog</a>
-    <!-- <span v-if="settings.govRecordInfo" class="record-info">
+    <span v-if="settings.govRecordInfo" class="record-info">
       |
       {{ settings.govRecordInfo }}
-    </span> -->
+    </span>
     <span v-if="settings.recordInfo" class="record-info">
       |
       <a href="http://beian.miit.gov.cn" target="_blank">{{ settings.recordInfo }}</a>

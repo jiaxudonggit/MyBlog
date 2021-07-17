@@ -5,7 +5,6 @@ ADD . /app
 
 WORKDIR /app
 RUN yarn config set registry https://registry.npm.taobao.org \
-  && yarn config set sass-binary-site http://npm.taobao.org/mirrors/node-sass \
   && yarn install \
   && yarn build
 
