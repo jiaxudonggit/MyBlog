@@ -137,6 +137,8 @@ $ yarn global add pm2
 #### 启动
 ```Shell
 $  pm2 start processes.json
+或者
+$  pm2 start yarn -i 2 --name blog -- start
 ```
 
 ### 使用noginx

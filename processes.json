@@ -2,24 +2,19 @@
     "apps": [
       {
         "name": "blog",
-        "script": "./node_modules/nuxt/bin/nuxt.js",
+        "cwd": "/root/webapp/MyBlog",
+        "script": "./start.sh",
         "log_date_format": "YYYY-MM-DD HH:mm Z",
         "error_file": "/root/webapp/MyBlog/logs/error.log",
         "out_file": "/root/webapp/MyBlog/logs/access.log",
         "pid_file": "/root/webapp/MyBlog/pids/myblog.pid",
-        "instances": 2,
         "min_uptime": "200s",
         "max_restarts": 10,
-        "max_memory_restart": "512M",
+        "max_memory_restart": "1024M",
         "cron_restart": "1 0 * * *",
         "watch": false,
         "merge_logs": true,
-        "exec_mode"  : "cluster",
-        "args": "start -c nuxt.config.ts",
-        "env": {
-          "PORT": "9000",
-          "NODE_ENV": "production"
-        }
+        "exec_mode"  : "fork"
       }
     ]
   }
