@@ -2,7 +2,7 @@
   "apps": [{
     "name": "myblog",
     "script": "yarn",
-    "args": "start",
+    "args": "start --name myblog -- start:next",
     "interpreter": "/bin/bash"
   }]
 }
