@@ -15,8 +15,9 @@
         "watch": false,
         "merge_logs": true,
         "exec_mode"  : "cluster",
-        "args": "start",
+        "args": "start -c nuxt.config.ts",
         "env": {
+          "PORT": "9000",
           "NODE_ENV": "production"
         }
       }
