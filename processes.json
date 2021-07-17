@@ -3,7 +3,7 @@
       {
         "name": "myblog",
         "cwd": "/root/webapp/MyBlog",
-        "script": "yarn",
+        "script": "./start.sh",
         "args": ["start"],
         "log_date_format": "YYYY-MM-DD HH:mm Z",
         "error_file": "/root/webapp/MyBlog/logs/error.log",
@@ -12,14 +12,10 @@
         "instances": 2,
         "min_uptime": "200s",
         "max_restarts": 10,
-        "max_memory_restart": "1M",
+        "max_memory_restart": "1024M",
         "cron_restart": "1 0 * * *",
         "watch": false,
-        "merge_logs": true,
-        "exec_interpreter": "/bin/bash",
-        "exec_mode": "fork",
-        "autorestart": false,
-        "vizion": false
+        "merge_logs": true
       }
     ]
   }
