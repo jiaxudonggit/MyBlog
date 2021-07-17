@@ -1,0 +1,20 @@
+version: '1.0'
+services:
+  database:
+    image: mongo:4.4.7
+    restart: always
+    volumes:
+      - ~/data/db:/data/db
+    networks:
+      - blog-network
+  web:
+    image: blog
+    depends_on:
+      - blog-database
+    ports:
+      - 9000:9000
+    networks:
+      - blog-network
+networks:
+  blog-network:
+    driver: bridge
