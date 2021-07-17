@@ -1,0 +1,25 @@
+{
+    "apps": [
+      {
+        "name": "myblog",
+        "cwd": "/root/webapp/MyBlog",
+        "script": "yarn",
+        "args": "start",
+        "log_date_format": "YYYY-MM-DD HH:mm Z",
+        "error_file": "/root/webapp/MyBlog/logs/error.log",
+        "out_file": "/root/webapp/MyBlog/logs/access.log",
+        "pid_file": "/root/webapp/MyBlog/pids/myblog.pid",
+        "instances": 6,
+        "min_uptime": "200s",
+        "max_restarts": 10,
+        "max_memory_restart": "1M",
+        "cron_restart": "1 0 * * *",
+        "watch": false,
+        "merge_logs": true,
+        "exec_interpreter": "node",
+        "exec_mode": "fork",
+        "autorestart": false,
+        "vizion": false
+      }
+    ]
+  }

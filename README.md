@@ -136,7 +136,7 @@ $ yarn global add pm2
 ```
 #### 启动
 ```Shell
-$ pm2 start pm2.json
+$ pm2 start processes.json
 ```
 
 ### 使用noginx
