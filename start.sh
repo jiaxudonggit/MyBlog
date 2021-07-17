@@ -1,1 +1,1 @@
-yarn start
+yarn run nuxt-ts start
