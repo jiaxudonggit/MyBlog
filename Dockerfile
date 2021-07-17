@@ -1,13 +1,14 @@
-FROM node:14.17.3
+FROM node:lts as build
 
-COPY . /app
+RUN mkdir /app
+ADD . /app
+
 WORKDIR /app
-
-RUN yarn config set registry https://registry.npm.taobao.org/
-RUN rm -rf ./node_modules
-RUN yarn install --no-bin-links
-RUN yarn run build
+RUN yarn config set registry https://registry.npm.taobao.org \
+  && yarn config set sass-binary-site http://npm.taobao.org/mirrors/node-sass \
+  && yarn install \
+  && yarn build
 
 EXPOSE 9000
 
-CMD BUILD_ENV=docker yarn run start
+CMD BUILD_ENV=docker yarn start
