@@ -210,6 +210,7 @@ export default Vue.extend({
         blogSlogan: settings.blogSlogan,
         showBlogIntro: settings.showBlogIntro,
         recordInfo: settings.recordInfo,
+        govRecordInfo: settings.govRecordInfo,
         blogIntro: settings.blogIntro,
         postPageSize: settings.postPageSize,
         enablePreview: settings.enablePreview,
