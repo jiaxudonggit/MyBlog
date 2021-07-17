@@ -58,12 +58,21 @@
         </a-form-item>
         <a-form-item :colon="false">
           <span slot="label">
-            备案信息
+            ICP备案信息
             <a-tooltip title="根据最新规定，网站下方必须设置备案编号和查询链接" placement="topLeft" arrow-point-at-center>
               <a-icon type="question-circle-o" />
             </a-tooltip>
           </span>
-          <a-input v-decorator="['recordInfo']" placeholder="请输入备案信息" allow-clear />
+          <a-input v-decorator="['recordInfo']" placeholder="请输入ICP备案信息" allow-clear />
+        </a-form-item>
+        <a-form-item :colon="false">
+          <span slot="label">
+            公安备案信息
+            <a-tooltip title="根据最新规定，网站下方必须设置公安备案信息" placement="topLeft" arrow-point-at-center>
+              <a-icon type="question-circle-o" />
+            </a-tooltip>
+          </span>
+          <a-input v-decorator="['govRecordInfo']" placeholder="请输入公安备案信息" allow-clear />
         </a-form-item>
         <a-form-item :colon="false">
           <span slot="label">
