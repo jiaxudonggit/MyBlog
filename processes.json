@@ -4,7 +4,7 @@
         "name": "myblog",
         "cwd": "/root/webapp/MyBlog",
         "script": "yarn",
-        "args": "start",
+        "args": ["start"],
         "log_date_format": "YYYY-MM-DD HH:mm Z",
         "error_file": "/root/webapp/MyBlog/logs/error.log",
         "out_file": "/root/webapp/MyBlog/logs/access.log",
