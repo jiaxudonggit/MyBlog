@@ -1,6 +1,6 @@
 version: '3.7'
 services:
-  database:
+  blog-database:
     image: mongo:4.4.6
     restart: always
     volumes:
