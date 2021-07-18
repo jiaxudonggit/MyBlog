@@ -6,21 +6,11 @@ services:
     restart: always
     volumes:
       - ~/data/db:/data/mongodb
-    networks:
-      - blog-network
     command: [--auth]
   web_blog:
     image: blog:v1.0.0
     container_name: web_blog
     depends_on:
       - database_blog
-    links:
-      - database_blog:database_blog
     ports:
       - 9000:9000
-    networks:
-      - blog-network
-networks:
-  blog-network:
-    driver: bridge
-    name: blog-network
