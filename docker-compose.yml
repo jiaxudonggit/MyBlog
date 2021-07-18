@@ -9,7 +9,7 @@ services:
       - blog-network
     command: [--auth]
   web:
-    image: blog
+    image: blog:v1.0.0
     depends_on:
       - blog-database
     ports:
