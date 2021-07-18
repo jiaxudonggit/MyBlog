@@ -1,19 +1,19 @@
 version: '3.7'
 services:
-  database:
+  blog-database:
     image: mongo:4.4.6
-    restart: always
     container_name: blog-database
+    restart: always
     volumes:
-      - ~/data/db:/data/db
+      - ~/data/db:/data/mongodb
     networks:
       - blog-network
     command: [--auth]
-  web:
+  blog-web:
     image: blog:v1.0.0
+    container_name: blog-web
     depends_on:
       - blog-database
-    container_name: blog-web
     ports:
       - 9000:9000
     networks:
