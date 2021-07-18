@@ -1,8 +1,9 @@
 version: '3.7'
 services:
-  blog-database:
+  database:
     image: mongo:4.4.6
     restart: always
+    container_name: blog-database
     volumes:
       - ~/data/db:/data/db
     networks:
@@ -12,6 +13,7 @@ services:
     image: blog:v1.0.0
     depends_on:
       - blog-database
+    container_name: blog-web
     ports:
       - 9000:9000
     networks:
