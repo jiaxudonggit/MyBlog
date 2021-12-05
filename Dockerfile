@@ -22,4 +22,5 @@ RUN chmod +x  $APP_HOME/docker-entrypoint.sh
 
 EXPOSE 9000
 
-CMD yarn run start
+# run docker-entrypoint.sh
+ENTRYPOINT ["./docker-entrypoint.sh"]
