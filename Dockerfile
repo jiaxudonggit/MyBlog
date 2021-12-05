@@ -19,5 +19,5 @@ COPY . .
 
 EXPOSE 9000
 
-#CMD pm2 start /app/processes.json
-CMD ls /app
+CMD ls -a
+CMD pm2 start /app/processes.json
