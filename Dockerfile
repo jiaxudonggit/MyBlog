@@ -13,9 +13,9 @@ RUN yarn global add pm2
 RUN yarn build
 
 COPY ./processes.json .
-RUN ls
+RUN ls -a
 
 EXPOSE 9000
 
 # run docker-entrypoint.sh
-CMD ["pm2", "start", "$APP_HOME/processes.json"]
+CMD ["pm2", "start", "/app/processes.json"]
