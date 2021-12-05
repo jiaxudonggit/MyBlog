@@ -23,8 +23,10 @@ FROM node:14-alpine3.13
 
 WORKDIR /app
 
+RUN yarn global add pm2
+
 COPY --from=builder /app  .
 
 EXPOSE 9000
 
-CMD [ "yarn", "start" ]
+CMD ["pm2-runtime", "processes.json"]
