@@ -24,4 +24,4 @@ RUN chmod +x  $APP_HOME/docker-entrypoint.sh
 EXPOSE 9000
 
 # run docker-entrypoint.sh
-ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD ["pm2", "start", "processes.json"]
