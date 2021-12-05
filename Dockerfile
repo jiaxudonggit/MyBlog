@@ -7,6 +7,7 @@ ENV APP_HOME=/app
 WORKDIR $APP_HOME
 
 COPY ./package.json /package.json
+COPY ./tsconfig.json /tsconfig.json
 COPY ./processes.json /processes.json
 
 RUN yarn config set registry https://registry.npm.taobao.org
