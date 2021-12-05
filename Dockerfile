@@ -15,10 +15,9 @@ RUN yarn config set registry https://registry.npm.taobao.org
 RUN yarn global add pm2
 RUN yarn build
 
-EXPOSE 9000
-
-COPY . $APP_HOME
 COPY . .
+
+EXPOSE 9000
 
 #CMD pm2 start /app/processes.json
 CMD ls /app
