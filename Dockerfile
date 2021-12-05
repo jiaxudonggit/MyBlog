@@ -2,7 +2,7 @@ FROM node:14-alpine3.13 as build
 
 ENV NODE_ENV=production
 ENV BUILD_ENV=docker
-ENV APP_HOME=/usr/src/app
+ENV APP_HOME=/app
 
 RUN mkdir $APP_HOME
 WORKDIR $APP_HOME
