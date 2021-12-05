@@ -1,6 +1,7 @@
 FROM node:14-alpine3.13 as build
 
 ENV NODE_ENV=production
+ENV BUILD_ENV=docker
 
 RUN mkdir /var/www/app
 COPY . /var/www/app
