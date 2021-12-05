@@ -1,10 +1,8 @@
 .git
-.nuxt
-.history
-.vscode
 Dockerfile
 .dockerignore
 node_modules
 npm-debug.log
 README.md
+.next
 yarn-error.log
