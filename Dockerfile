@@ -1,22 +1,25 @@
 FROM node:14-alpine3.13 as build
 
+ENV PORT=9000
 ENV NODE_ENV=production
 ENV BUILD_ENV=docker
 ENV APP_HOME=/app
 
+# Create app directory
+RUN mkdir -p $APP_HOME
 WORKDIR $APP_HOME
 
-COPY ./package.json /package.json
-COPY ./tsconfig.json /tsconfig.json
-COPY ./processes.json /processes.json
-COPY ./start.sh /start.sh
-RUN chmod +x /start.sh
+# Installing dependencies
+COPY package*.json $APP_HOME
+RUN yarn
 
-RUN yarn config set registry https://registry.npm.taobao.org
-RUN yarn global add pm2 && yarn && yarn build
+# Copying source files
+COPY . $APP_HOME
 
-COPY . .
+# Building app
+RUN yarn build
 
 EXPOSE 9000
 
-CMD ["pm2-runtime", "/processes.json"]
+# start service
+CMD ["yarn", "start"]
