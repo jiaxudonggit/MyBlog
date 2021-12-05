@@ -5,7 +5,7 @@ ENV APP_HOME=/app
 
 WORKDIR $APP_HOME
 
-COPY . .
+COPY . $APP_HOME
 COPY package*.json $APP_HOME
 
 RUN yarn install \
