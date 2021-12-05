@@ -19,4 +19,5 @@ EXPOSE 9000
 
 # run docker-entrypoint.sh
 CMD ["ls", "-a"]
+CMD ["pwd"]
 CMD ["pm2", "start", "/app/processes.json"]
