@@ -92,4 +92,4 @@ sw.*
 # Upload Files
 static/upload/images/*
 
-yarn.lock
+#yarn.lock
