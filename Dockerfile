@@ -4,12 +4,10 @@ ENV NODE_ENV=production
 ENV BUILD_ENV=docker
 ENV APP_HOME=/app
 
-RUN mkdir $APP_HOME
-COPY . $APP_HOME
 WORKDIR $APP_HOME
 
-COPY package*.json ./
-COPY processes.json ./
+COPY ./package.json /package.json
+COPY ./processes.json /processes.json
 
 RUN yarn config set registry https://registry.npm.taobao.org
 RUN yarn global add pm2
@@ -19,5 +17,4 @@ COPY . .
 
 EXPOSE 9000
 
-CMD ls -a
-CMD yarn run start
+CMD ["pm2-runtime", "processes.json"]

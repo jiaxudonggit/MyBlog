@@ -2,7 +2,7 @@
     "apps": [
       {
         "name": "blog",
-        "cwd": "/app",
+        "cwd": ".",
         "script": "./start.sh",
         "log_date_format": "YYYY-MM-DD HH:mm Z",
         "error_file": "./logs/error.log",
