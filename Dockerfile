@@ -1,4 +1,4 @@
-FROM node:alpine:3.13 as build
+FROM node:carbon as build
 
 RUN mkdir /app
 ADD . /app
