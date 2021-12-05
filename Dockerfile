@@ -17,5 +17,8 @@ RUN yarn build
 
 EXPOSE 9000
 
+COPY . $APP_HOME
+COPY . .
+
 #CMD pm2 start ./processes.json
 CMD pwd && ls -a
