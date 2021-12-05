@@ -21,4 +21,4 @@ COPY . $APP_HOME
 COPY . .
 
 #CMD pm2 start /app/processes.json
-CMD pwd && ls /app
+CMD ls /app
