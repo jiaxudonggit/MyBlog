@@ -13,13 +13,9 @@ RUN yarn config set registry https://registry.npm.taobao.org
 RUN yarn global add pm2
 RUN yarn build
 
-# copy project
-COPY . $APP_HOME
 COPY . .
-
-# copy docker-entrypoint.sh
 COPY ./docker-entrypoint.sh .
-RUN sed -i 's/\r$//g'  $APP_HOME/docker-entrypoint.sh
+COPY ./processes.json .
 
 # 可执行权限
 RUN chmod +x  $APP_HOME/docker-entrypoint.sh
