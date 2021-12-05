@@ -17,4 +17,5 @@ RUN yarn build
 
 EXPOSE 9000
 
-CMD pm2 start ./processes.json
+#CMD pm2 start ./processes.json
+CMD pwd
