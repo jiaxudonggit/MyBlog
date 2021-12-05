@@ -1,1 +1,6 @@
-#!/bin/sh# 启动服务pm2 start processes.jsonexec "$@"
+#!/bin/bash
+
+# 启动服务
+pm2 start /app/processes.json
+
+exec "$@"
