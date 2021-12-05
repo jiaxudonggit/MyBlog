@@ -5,6 +5,8 @@ ENV APP_HOME=/app
 
 WORKDIR $APP_HOME
 
+COPY ./package.json /package.json
+
 COPY . .
 
 RUN yarn install \
@@ -29,6 +31,7 @@ ENV APP_HOME=/app
 WORKDIR $APP_HOME
 
 COPY --from=builder $APP_HOME  .
+COPY --from=builder /package.json /package.json
 
 ENV HOST=0.0.0.0
 EXPOSE 3000
