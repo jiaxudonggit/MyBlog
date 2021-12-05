@@ -1,5 +1,5 @@
 # Install dependencies only when needed
-FROM node:alpine AS deps
+FROM node:14-alpine3.13 AS deps
 
 ENV NODE_OPTIONS=--openssl-legacy-provider
 
@@ -11,7 +11,7 @@ RUN yarn install --frozen-lockfile
 RUN ls -a
 
 # Rebuild the source code only when needed
-FROM node:alpine AS builder
+FROM node:14-alpine3.13 AS builder
 
 ENV NODE_OPTIONS=--openssl-legacy-provider
 ENV BUILD_ENV=docker
@@ -23,7 +23,7 @@ RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 RUN ls -a
 
 # Production image, copy all the files and run next
-FROM node:alpine AS runner
+FROM node:14-alpine3.13 AS runner
 WORKDIR /app
 
 ENV NODE_ENV production
@@ -52,4 +52,4 @@ ENV PORT 3000
 # Uncomment the following line in case you want to disable telemetry.
 # ENV NEXT_TELEMETRY_DISABLED 1
 
-CMD ["node_modules/.bin/next", "start"]
+CMD ["yarn", "start"]
