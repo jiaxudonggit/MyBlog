@@ -36,4 +36,6 @@ RUN ls /
 ENV HOST=0.0.0.0
 EXPOSE 3000
 
+CMD [ "pwd" ]
+CMD [ "ls", "/app" ]
 CMD [ "yarn", "start" ]
