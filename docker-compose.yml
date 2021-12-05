@@ -3,7 +3,6 @@ services:
   blog:
     image: blog:latest
     container_name: blog
-    build: ./
     volumes:
       - /data/docker/blog/:/app
     networks:
