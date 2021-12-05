@@ -12,7 +12,7 @@
         "max_restarts": 10,
         "max_memory_restart": "1024M",
         "cron_restart": "1 0 * * *",
-        "watch": true,
+        "watch": false,
         "merge_logs": true,
         "exec_mode"  : "fork"
       }
