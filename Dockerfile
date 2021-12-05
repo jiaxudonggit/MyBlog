@@ -1,10 +1,11 @@
-FROM node:14.18.1 as build
+FROM node:14-alpine3.13 as build
 
-RUN mkdir /app
-ADD . /app
-
-WORKDIR /app
 ENV NODE_ENV=production
+
+RUN mkdir /var/www/app
+COPY . /var/www/app
+WORKDIR /var/www/app
+
 RUN yarn config set registry https://registry.npm.taobao.org
 RUN yarn cache clean
 RUN yarn global add pm2
