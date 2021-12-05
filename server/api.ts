@@ -9,6 +9,8 @@ const app = express();
 
 app.use(cookieParser());
 app.use(bodyParser.json());
+app.use(express.json({ limit: '256mb' }));
+app.use(express.urlencoded({ limit: '256mb', extended: true, parameterLimit: 50000 }));
 
 app.use('/auth', authRoute);
 app.use('/admin', adminRoute);

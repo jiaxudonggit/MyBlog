@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Configuration } from '@nuxt/types';
+import { Configuration } from '@nuxt/types/index';
 import blogConfig from './blog.config';
 
 const server: any = {
@@ -20,7 +20,7 @@ const config: Configuration = {
    ** Headers of the page
    */
   head: {
-    title: 'iBlog',
+    title: '莫愁前路',
     meta: [
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
