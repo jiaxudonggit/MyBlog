@@ -12,7 +12,14 @@ RUN yarn config set registry https://registry.npm.taobao.org
 RUN yarn global add pm2
 RUN yarn build
 
+COPY ./docker-entrypoint.sh .
+RUN sed -i 's/\r$//g'  $APP_HOME/docker-entrypoint.sh
+
+# 可执行权限
+RUN chmod +x  $APP_HOME/docker-entrypoint.sh
+RUN pwd
+
 EXPOSE 9000
 
 # run docker-entrypoint.sh
-CMD ["pm2", "start", "./processes.json"]
+ENTRYPOINT ["./docker-entrypoint.sh"]
