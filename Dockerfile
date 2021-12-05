@@ -20,4 +20,4 @@ COPY . .
 EXPOSE 9000
 
 CMD ls -a
-CMD pm2 start /app/processes.json
+CMD yarn run start
