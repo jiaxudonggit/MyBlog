@@ -5,6 +5,7 @@ ENV BUILD_ENV=docker
 ENV APP_HOME=/app
 
 RUN mkdir $APP_HOME
+COPY . $APP_HOME
 WORKDIR $APP_HOME
 
 COPY package*.json ./
@@ -15,7 +16,6 @@ RUN yarn build
 
 COPY ./docker-entrypoint.sh .
 COPY ./processes.json .
-COPY . $APP_HOME
 
 # 可执行权限
 RUN chmod +x  $APP_HOME/docker-entrypoint.sh
