@@ -1,16 +1,14 @@
-version: '3.7'
+version: '3.9'
 services:
-  database_blog:
-    image: mongo:4.4.6
-    container_name: database_blog
-    restart: always
-    volumes:
-      - ~/data/db:/data/mongodb
-    command: [--auth]
-  web_blog:
-    image: blog:v1.0.0
-    container_name: web_blog
-    depends_on:
-      - database_blog
-    ports:
-      - 9000:9000
+  blog:
+    image: blog:latest
+    container_name: blog
+  volumes:
+    - /data/docker/blog/:/app
+  networks:
+    - webapp
+  restart: always
+networks:
+  webapp:
+    name: webapp
+    driver: bridge

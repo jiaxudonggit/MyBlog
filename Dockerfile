@@ -1,4 +1,4 @@
-FROM node:lts as build
+FROM node:latest as build
 
 RUN mkdir /app
 ADD . /app
