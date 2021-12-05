@@ -5,8 +5,7 @@ ENV APP_HOME=/app
 
 WORKDIR $APP_HOME
 
-COPY . $APP_HOME
-COPY package*.json $APP_HOME
+COPY . .
 
 RUN yarn install \
   --prefer-offline \
@@ -29,8 +28,10 @@ ENV APP_HOME=/app
 
 WORKDIR $APP_HOME
 
-COPY --from=builder package*.json $APP_HOME
-COPY --from=builder $APP_HOME  .
+COPY --from=builder $APP_HOME  $APP_HOME
+
+RUN ls
+RUN ls /
 
 ENV HOST=0.0.0.0
 EXPOSE 3000
