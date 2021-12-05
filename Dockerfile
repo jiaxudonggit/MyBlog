@@ -1,52 +1,31 @@
-# Install dependencies only when needed
-FROM node:14-alpine3.13 AS deps
-# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
-RUN apk add --no-cache libc6-compat
-WORKDIR /app
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
-RUN ls -a
-
-# Rebuild the source code only when needed
-FROM node:14-alpine3.13 AS builder
-
-ENV BUILD_ENV=docker
+FROM node:14-alpine3.13 as builder
 
 WORKDIR /app
+
 COPY . .
-COPY --from=deps /app/node_modules ./node_modules
-RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
-RUN ls -a
 
-# Production image, copy all the files and run next
-FROM node:14-alpine3.13 AS runner
+RUN yarn install \
+  --prefer-offline \
+  --frozen-lockfile \
+  --non-interactive \
+  --production=false
+
+RUN yarn build
+
+RUN rm -rf node_modules && \
+  NODE_ENV=production yarn install \
+  --prefer-offline \
+  --pure-lockfile \
+  --non-interactive \
+  --production=true
+
+FROM node:14-alpine3.13
+
 WORKDIR /app
 
-ENV NODE_ENV production
+COPY --from=builder /app  .
 
-RUN addgroup -g 1001 -S nodejs
-RUN adduser -S nuxtts -u 1001
+ENV HOST 0.0.0.0
+EXPOSE 80
 
-# You only need to copy next.config.js if you are NOT using the default configuration
-#COPY --from=builder --chown=nuxtts:nodejs /app ./
-COPY --from=builder /app/nuxt.config.ts ./
-COPY --from=builder /app/blog.config.ts ./
-COPY --from=builder /app/static ./static
-COPY --from=builder --chown=nuxtts:nodejs /app/.nuxt ./.nuxt
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/package.json ./package.json
-
-USER nuxtts
-
-EXPOSE 3000
-
-ENV PORT 3000
-
-# Next.js collects completely anonymous telemetry data about general usage.
-# Learn more here: https://nuxtts.org/telemetry
-# Uncomment the following line in case you want to disable telemetry.
-# ENV NEXT_TELEMETRY_DISABLED 1
-
-CMD ["echo", "$(ls)"]
-CMD ["echo", "$(pwd)"]
-CMD ["nuxt-ts", "start"]
+CMD [ "yarn", "start" ]
