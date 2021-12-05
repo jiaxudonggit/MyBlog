@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { Configuration } from '@nuxt/types/index';
+import { Configuration } from '@nuxt/types';
 import blogConfig from './blog.config';
 
 const server: any = {
