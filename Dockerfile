@@ -1,25 +1,43 @@
-FROM node:14-alpine3.13 as build
+# Install dependencies only when needed
+FROM node:alpine AS deps
+# Check https://github.com/nodejs/docker-node/tree/b4117f9333da4138b03a546ec926ef50a31506c3#nodealpine to understand why libc6-compat might be needed.
+RUN apk add --no-cache libc6-compat
+WORKDIR /app
+COPY package.json yarn.lock ./
+RUN yarn install --frozen-lockfile
 
-ENV PORT=9000
-ENV NODE_ENV=production
-ENV BUILD_ENV=docker
-ENV APP_HOME=/app
+# Rebuild the source code only when needed
+FROM node:alpine AS builder
+WORKDIR /app
+COPY . .
+COPY --from=deps /app/node_modules ./node_modules
+RUN yarn build && yarn install --production --ignore-scripts --prefer-offline
 
-# Create app directory
-RUN mkdir -p $APP_HOME
-WORKDIR $APP_HOME
+# Production image, copy all the files and run next
+FROM node:alpine AS runner
+WORKDIR /app
 
-# Installing dependencies
-COPY package*.json $APP_HOME
-RUN yarn
+ENV NODE_ENV production
 
-# Copying source files
-COPY . $APP_HOME
+RUN addgroup -g 1001 -S nodejs
+RUN adduser -S nextjs -u 1001
 
-# Building app
-RUN yarn build
+# You only need to copy next.config.js if you are NOT using the default configuration
+# COPY --from=builder /app/next.config.js ./
+COPY --from=builder /app/public ./public
+COPY --from=builder --chown=nextjs:nodejs /app/.next ./.next
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
-EXPOSE 9000
+USER nextjs
 
-# start service
-CMD ["yarn", "start"]
+EXPOSE 3000
+
+ENV PORT 3000
+
+# Next.js collects completely anonymous telemetry data about general usage.
+# Learn more here: https://nextjs.org/telemetry
+# Uncomment the following line in case you want to disable telemetry.
+# ENV NEXT_TELEMETRY_DISABLED 1
+
+CMD ["node_modules/.bin/next", "start"]
