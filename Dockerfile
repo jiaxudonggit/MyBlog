@@ -10,8 +10,7 @@ COPY ./package.json /package.json
 COPY ./processes.json /processes.json
 
 RUN yarn config set registry https://registry.npm.taobao.org
-RUN yarn global add pm2
-RUN yarn build
+RUN yarn global add pm2 && yarn && yarn build
 
 COPY . .
 
