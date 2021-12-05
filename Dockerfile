@@ -5,6 +5,7 @@ ENV BUILD_ENV=docker
 ENV APP_HOME=/app
 
 RUN mkdir $APP_HOME
+COPY . $APP_HOME
 WORKDIR $APP_HOME
 
 RUN yarn config set registry https://registry.npm.taobao.org
