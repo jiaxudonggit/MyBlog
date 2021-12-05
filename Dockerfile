@@ -9,12 +9,14 @@ WORKDIR $APP_HOME
 COPY ./package.json /package.json
 COPY ./tsconfig.json /tsconfig.json
 COPY ./processes.json /processes.json
+COPY ./start.sh $APP_HOME/start.sh
 
 RUN yarn config set registry https://registry.npm.taobao.org
 RUN yarn global add pm2 && yarn && yarn build
 
 COPY . .
+RUN chmod +x  $APP_HOME/start.sh
 
 EXPOSE 9000
 
-CMD ["pm2-runtime", "/processes.json"]
+CMD ["pm2-runtime", "processes.json"]
