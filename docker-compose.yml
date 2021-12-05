@@ -4,7 +4,8 @@ services:
     image: blog:latest
     container_name: blog
     volumes:
-      - /data/docker/blog/:/app
+      - /data/docker/blog/logs:/app/logs
+      - /data/docker/blog/upload:/app/static/upload
     networks:
       - webapp
     restart: always
