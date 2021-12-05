@@ -3,7 +3,7 @@
       {
         "name": "blog",
         "cwd": "/app",
-        "script": "./start.sh",
+        "script": "/start.sh",
         "log_date_format": "YYYY-MM-DD HH:mm Z",
         "error_file": "./logs/error.log",
         "out_file": "./logs/access.log",
