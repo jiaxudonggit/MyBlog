@@ -1,1 +1,1 @@
-yarn start
+#!/bin/sh
