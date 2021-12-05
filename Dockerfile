@@ -4,10 +4,12 @@ RUN mkdir /app
 ADD . /app
 
 WORKDIR /app
-RUN yarn config set registry https://registry.npm.taobao.org \
-  && yarn \
-  && yarn build
+RUN yarn config set registry https://registry.npm.taobao.org
+RUN yarn install -g pm2
+RUN yarn 
+RUN yarn build
 
 EXPOSE 9000
 
-CMD BUILD_ENV=docker yarn start
+# run docker-entrypoint.sh
+ENTRYPOINT ["./docker-entrypoint.sh"]

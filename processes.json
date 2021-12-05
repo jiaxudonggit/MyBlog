@@ -2,17 +2,17 @@
     "apps": [
       {
         "name": "blog",
-        "cwd": "/root/webapp/MyBlog",
+        "cwd": "/app",
         "script": "./start.sh",
         "log_date_format": "YYYY-MM-DD HH:mm Z",
-        "error_file": "/root/webapp/MyBlog/logs/error.log",
-        "out_file": "/root/webapp/MyBlog/logs/access.log",
-        "pid_file": "/root/webapp/MyBlog/pids/myblog.pid",
+        "error_file": "./logs/error.log",
+        "out_file": "./logs/access.log",
+        "pid_file": "./pids/blog.pid",
         "min_uptime": "200s",
         "max_restarts": 10,
         "max_memory_restart": "1024M",
         "cron_restart": "1 0 * * *",
-        "watch": false,
+        "watch": true,
         "merge_logs": true,
         "exec_mode"  : "fork"
       }
