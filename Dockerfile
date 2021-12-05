@@ -8,10 +8,7 @@ COPY . /app
 WORKDIR /app
 
 RUN yarn config set registry https://registry.npm.taobao.org
-RUN yarn cache clean
-RUN yarn global add pm2
-RUN yarn install
-RUN yarn build
+RUN yarn global add pm2 && yarn && yarn build
 
 EXPOSE 9000
 
