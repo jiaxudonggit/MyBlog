@@ -5,6 +5,7 @@ ENV APP_HOME=/app
 
 WORKDIR $APP_HOME
 
+COPY package*.json $APP_HOME
 COPY . .
 
 RUN yarn install \
@@ -28,14 +29,12 @@ ENV APP_HOME=/app
 
 WORKDIR $APP_HOME
 
-COPY --from=builder $APP_HOME  $APP_HOME
+COPY --from=builder $APP_HOME  .
+COPY package*.json $APP_HOME
 
-RUN ls
-RUN ls /
+RUN ls -a && pwd
 
 ENV HOST=0.0.0.0
 EXPOSE 3000
 
-CMD [ "pwd" ]
-CMD [ "ls", "/app" ]
 CMD [ "yarn", "start" ]
