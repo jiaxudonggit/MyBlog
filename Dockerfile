@@ -20,5 +20,5 @@ EXPOSE 9000
 COPY . $APP_HOME
 COPY . .
 
-#CMD pm2 start ./processes.json
-CMD pwd && ls -a
+#CMD pm2 start /app/processes.json
+CMD pwd && ls /app
