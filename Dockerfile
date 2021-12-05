@@ -9,18 +9,12 @@ COPY . $APP_HOME
 WORKDIR $APP_HOME
 
 COPY package*.json ./
+COPY processes.json ./
 
 RUN yarn config set registry https://registry.npm.taobao.org
 RUN yarn global add pm2
 RUN yarn build
 
-COPY ./docker-entrypoint.sh .
-COPY ./processes.json .
-
-# 可执行权限
-RUN chmod +x  $APP_HOME/docker-entrypoint.sh
-
 EXPOSE 9000
 
-# run docker-entrypoint.sh
-ENTRYPOINT ["./docker-entrypoint.sh"]
+CMD pm2 start ./processes.json
