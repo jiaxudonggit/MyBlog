@@ -7,7 +7,7 @@
         "log_date_format": "YYYY-MM-DD HH:mm Z",
         "error_file": "./logs/error.log",
         "out_file": "./logs/access.log",
-        "pid_file": "./pids/blog.pid",
+        "pid_file": "./pid/blog.pid",
         "min_uptime": "200s",
         "max_restarts": 10,
         "max_memory_restart": "1024M",

@@ -5,7 +5,7 @@ services:
     container_name: blog
     build: ./
     volumes:
-      - /data/docker/blog/:/app
+      - /data/docker/blog/:/var/www/app
     networks:
       - webapp
     restart: always
