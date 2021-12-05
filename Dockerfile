@@ -17,4 +17,4 @@ COPY . .
 
 EXPOSE 9000
 
-CMD ["pm2-runtime", "processes.json"]
+CMD ["pm2-runtime", "/processes.json"]
