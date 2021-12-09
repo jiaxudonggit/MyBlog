@@ -2,12 +2,15 @@
   <div class="layout-footer">
     {{ year }} © Powered by
     <a
-      href="https://github.com/jiaxudonggit/MyBlog"
+      href="https://github.com/eshengsky/iBlog"
       target="_blank"
     >iBlog</a>
     <span v-if="settings.govRecordInfo" class="record-info">
       |
-      {{ settings.govRecordInfo }}
+      <a target="_blank" :href="`http ://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.govRecordInfo}`">
+        <img src="/images/www.beian.gov.cn.png" alt=""/>
+        <span>京公网安备 {{ settings.govRecordInfo }}号</span>
+      </a>
     </span>
     <span v-if="settings.recordInfo" class="record-info">
       |
