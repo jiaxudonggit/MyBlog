@@ -1,0 +1,17 @@
+stages:
+  - build   # 构建
+
+build_job:
+  stage: build
+  tags:
+    - iBlog
+  only:
+    - dev
+    - master
+  script:
+    - ls -a
+    - docker-compose up -d --build
+    - echo y | docker image prune # 清理dangling镜像
+    - docker images
+
+# 后续可以增加测试job
