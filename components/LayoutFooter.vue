@@ -7,7 +7,7 @@
     >iBlog</a>
     <span v-if="settings.govRecordInfo" class="record-info">
       |
-      <a target="_blank" :href="`http ://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.govRecordInfo}`">
+      <a :href="`http://www.beian.gov.cn/portal/registerSystemInfo?recordcode=${settings.govRecordInfo}`" target="_blank">
         <img src="/images/www.beian.gov.cn.png" alt=""/>
         <span>京公网安备 {{ settings.govRecordInfo }}号</span>
       </a>
